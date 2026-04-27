@@ -1,18 +1,24 @@
-function calcular() {
-    let n1 = parseFloat(document.getElementById("num1").value);
-    let n2 = parseFloat(document.getElementById("num2").value);
-    let op = document.getElementById("operacao").value;
-    let resultado;
+function calcularIMC() {
 
-    if (op === "soma") {
-        resultado = n1 + n2;
-    } else if (op === "subtracao") {
-        resultado = n1 - n2;
-    } else if (op === "multiplicacao") {
-        resultado = n1 * n2;
-    } else if (op === "divisao") {
-        resultado = n2 !== 0 ? n1 / n2 : "Erro: divisão por zero";
-    }
+    let nome = "Marco";
+    let alturaCm = 1.78;
+    let peso = 82;
 
-    document.getElementById("resultado").innerText = "Resultado: " + resultado;
+    let alturaM = alturaCm / 100;
+    let imc = peso / (alturaM * alturaM);
+
+    let classificacao = "";
+
+    if (imc < 16) classificacao = "Baixo peso muito grave";
+    else if (imc < 17) classificacao = "Baixo peso grave";
+    else if (imc < 18.5) classificacao = "Baixo peso";
+    else if (imc < 25) classificacao = "Peso normal";
+    else if (imc < 30) classificacao = "Sobrepeso";
+    else if (imc < 35) classificacao = "Obesidade grau I";
+    else if (imc < 40) classificacao = "Obesidade grau II";
+    else classificacao = "Obesidade grau III";
+
+    alert(nome + " possui índice de massa corporal igual a " 
+        + imc.toFixed(2) + ", sendo classificado como: " 
+        + classificacao);
 }
